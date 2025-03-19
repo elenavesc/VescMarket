@@ -1,17 +1,20 @@
-import { useState } from 'react';
-import Navbar from "./components/navbar";
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import AppRoutes from "./routes/AppRoutes";
-import React from 'react';
+import React from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-     <div>
-          <Navbar />
-          <AppRoutes />
-        </div>
-  )
+    <BrowserRouter>
+      <div>
+        <Navbar />
+        <AppRoutes />
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
