@@ -1,3 +1,5 @@
+import React from "react";
+
 function ContactForm() {
     return <h1>Formulario de contacto</h1>;
   }

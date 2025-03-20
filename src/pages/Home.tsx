@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  const heroImages = [
+  const heroimage = [
     {
-      url: "/src/assets/images/flamenca.jpg",
+      url: "/public/images/flamenca.jpg",
       alt: "Colección Flamenca 2025",
       title: "COLECCIÓN FLAMENCA 2025",
       link: "/catalogFlamenca"
     },
     {
-      url: "/src/assets/images/child.jpg",
+      url: "/public/images/child.jpg",
       alt: "Nueva temporada infantil",
       title: "PRIMAVERA | VERANO PEQUES",
       link: "/catalogChildren"
     },
     {
-      url: "/src/assets/images/guest.jpg",
+      url: "/public/images/guest.jpg",
       alt: "Looks de invitada",
       title: "INVITADA PERFECTA",
       link: "/catalogInvitada"
@@ -26,32 +26,32 @@ function Home() {
   ];
   
   const categories = [
-    { name: "PEQUES", link: "/catalogChildren", image: "/src/assets/images/child.jpg" },
-    { name: "BEBÉS", link: "/catalogBaby", image: "/src/assets/images/baby.jpg" },
-    { name: "FLAMENCA", link: "/catalogFlamenca", image: "/src/assets/images/flamenca.jpg" },
-    { name: "INVITADA", link: "/catalogInvitada", image: "/src/assets/images/guest.jpg",},
-    { name: "EVENTOS", link: "/catalogOtherEvents", image: "/src/assets/images/events.jpg", }
+    { name: "PEQUES", link: "/catalogChildren", image: "/public/images/child.jpg" },
+    { name: "BEBÉS", link: "/catalogBaby", image: "/public/images/baby.jpg" },
+    { name: "FLAMENCA", link: "/catalogFlamenca", image: "/public/images/flamenca.jpg" },
+    { name: "INVITADA", link: "/catalogInvitada", image: "/public/images/guest.jpg",},
+    { name: "EVENTOS", link: "/catalogOtherEvents", image: "/public/images/events.jpg", }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+        prevIndex === heroimage.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
     
     return () => clearInterval(interval);
-  }, [heroImages.length]);
+  }, [heroimage.length]);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => 
-      prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      prevIndex === heroimage.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) => 
-      prevIndex === 0 ? heroImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? heroimage.length - 1 : prevIndex - 1
     );
   };
 
@@ -59,7 +59,7 @@ function Home() {
     <div className="min-h-screen bg-white">
       {/* Hero Slider */}
       <div className="relative h-screen overflow-hidden">
-        {heroImages.map((image, index) => (
+        {heroimage.map((image, index) => (
           <div 
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
