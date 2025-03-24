@@ -7,6 +7,7 @@ import CatalogInvitada from "../pages/CatalogGuest";
 import CatalogOtherEvents from "../pages/CatalogOtherEvents";
 import ContactForm from "../pages/ContactForm";
 import AboutUs from "../pages/AboutUs";
+import Sizes from "../pages/Sizes"
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
       <Route path="/catalogOtherEvents" element={<CatalogOtherEvents />} />
       <Route path="/contact" element={<ContactForm />} />
       <Route path="/aboutUs" element={<AboutUs />} />
+      <Route path="/sizes" element={<Sizes/>} />
     </Routes>
   );
 }

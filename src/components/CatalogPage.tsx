@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Tipos para nuestros datos
-type ProductCategory = 'Invitada' | 'Children' | 'Flamenca' | 'Bebé';
+type ProductCategory = 'Invitada' | 'Children' | 'Flamenca' | 'Bebé' |'Eventos';
 
 interface Product {
   id: string;
