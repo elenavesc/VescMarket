@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // Tipos para nuestros datos
 type ProductCategory = 'Invitada' | 'Children' | 'Flamenca' | 'Bebé' |'Eventos';
@@ -26,16 +26,15 @@ interface ProductPageProps {
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({
-  category,
   title,
   description,
   products,
   filters,
 }) => {
-  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+  const [] = useState<string | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  const [mobileView, setMobileView] = useState(false);
+  const [, setMobileView] = useState(false);
 
   // Comprobar si estamos en vista móvil
   useEffect(() => {

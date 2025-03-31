@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ProductPage from '../components/CatalogPage'; // Ajusta la ruta según donde esté tu componente
 
 function CatalogChildren() {

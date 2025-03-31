@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 
 function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+  interface FormData {
+    name: string;
+    email: string;
+    message: string;
+  }
+  
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    message: ''
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Partial<FormData>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const validateForm = () => {
-    let newErrors = {};
+  const validateForm = (): Partial<FormData> => {
+    let newErrors: Partial<FormData> = {};
     if (!formData.name.trim()) newErrors.name = "El nombre es obligatorio";
     if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "Correo inválido";
@@ -23,20 +29,21 @@ function ContactForm() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newErrors = validateForm();
     if (Object.keys(newErrors).length === 0) {
       setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 3000); // Ocultar mensaje después de 3s
+      setTimeout(() => setSubmitted(false), 3000);
       setFormData({ name: "", email: "", message: "" });
+      setErrors({});
     } else {
       setErrors(newErrors);
     }
   };
 
   return (
-    <div className=" container mx-auto p-6 bg-white">
+    <div className="container mx-auto p-6 bg-white">
       <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">Contacto</h2>
       {submitted && <p className="text-green-600 text-center mb-4">¡Mensaje enviado con éxito!</p>}
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -74,7 +81,7 @@ function ContactForm() {
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded-lg"
             placeholder="Escribe tu mensaje aquí..."
-            rows="4"
+            rows={4}
           ></textarea>
           {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
         </div>
